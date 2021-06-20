@@ -1,0 +1,32 @@
+`timescale 1ns / 1ps
+module alu_32(
+input [31:0] a,
+input [31:0] b,
+input [2:0] sel,
+output reg [31:0] y,
+output [32:0] carry
+);
+always@(*)
+begin
+case(sel)
+3&#39;b000:
+y = a + b;
+3&#39;b001:
+y = a-b;
+3&#39;b010:
+y= a&amp;b;
+3&#39;b011:
+y= a^b;
+
+3&#39;b100:
+y= a|b;
+3&#39;b101:
+y= a~^b;
+3&#39;b110:
+y= ~b;
+3&#39;b111:
+y= ~a;
+default: y=0;
+endcase
+end
+endmodule
