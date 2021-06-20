@@ -1,0 +1,23 @@
+`timescale 1ns / 1ps
+module alu_32_tb(
+);
+reg[31:0]a,b;
+reg[2:0]sel;
+wire [31:0]y;
+alu_32 uut(a,b,sel,y);
+initial begin
+a=32&#39;b00001010100111110000101011001100;
+b=32&#39;b11001010110000001101001010100011;
+end
+initial begin
+sel=3&#39;b000;
+#80 sel=3&#39;b001;
+#80 sel=3&#39;b010;
+#80 sel=3&#39;b011;
+#80 sel=3&#39;b100;
+#80 sel=3&#39;b101;
+#80 sel=3&#39;b110;
+#80 sel=3&#39;b111;
+#80 $stop;
+end
+endmodule
